@@ -10,11 +10,13 @@ int main() {
   SetTargetFPS(60);
 
   Camera camera {};
-  camera.position = { 1.0f, 3.0f, 3.0f };
+  camera.position = { 0.0f, 0.0f, 3.0f };
   camera.target = { 0.0f, 0.0f, 0.0f };
   camera.up = { 0.0f, 1.0f, 0.0f };
   camera.fovy = 45.0f;
   camera.projection = CAMERA_PERSPECTIVE;
+
+  Model monk = LoadModel("models/monk.glb");
 
   while (!WindowShouldClose()) {
     BeginDrawing();
@@ -22,17 +24,18 @@ int main() {
 
     BeginMode3D(camera);
 
-    DrawCube(
-        { 0.0f, 0.5f, 0.0f },
+    DrawModel(
+        monk,
+        { 0.0f, -1.5f, 0.0f },
         1.0f,
-        1.0f,
-        1.0f,
-        GREEN
+        WHITE
     );
 
     EndMode3D();
     EndDrawing();
   }
+
+  UnloadModel(monk);
 
   CloseWindow();
 
