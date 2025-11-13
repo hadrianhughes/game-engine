@@ -1,5 +1,5 @@
 CC = g++
-CPPFLAGS := -Wall -Weffc++ -Wextra -Wconversion -Wsign-conversion -Werror -pedantic-errors -std=c++17
+CPPFLAGS := -I./include -lraylib -Wall -Weffc++ -Wextra -Wconversion -Wsign-conversion -Werror -pedantic-errors -std=c++17
 SRC = $(wildcard src/*.cpp)
 OBJDIR = dist
 OBJ = $(patsubst src/%.cpp,$(OBJDIR)/%.o,$(SRC))
