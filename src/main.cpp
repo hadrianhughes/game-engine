@@ -4,8 +4,8 @@
 #include "raylib.h"
 
 int main() {
-  const int screenWidth = 800;
-  const int screenHeight = 600;
+  const int screenWidth { 800 };
+  const int screenHeight { 600 };
 
   InitWindow(screenWidth, screenHeight, "Game");
   SetTargetFPS(60);
@@ -17,10 +17,10 @@ int main() {
   camera.fovy = 45.0f;
   camera.projection = CAMERA_PERSPECTIVE;
 
-  Model monk = LoadModel("models/monk.glb");
+  Model monk { LoadModel("models/monk.glb") };
 
-  Shader lighting_shader = LoadShader("shaders/lighting.vertex.glsl", "shaders/lighting.fragment.glsl");
-  Vector3 color = { 1.0f, 1.0f, 1.0f };
+  Shader lighting_shader { LoadShader("shaders/lighting.vertex.glsl", "shaders/lighting.fragment.glsl") };
+  Vector3 color { 1.0f, 1.0f, 1.0f };
 
   SetShaderValue(
     lighting_shader,
