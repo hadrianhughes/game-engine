@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ranges>
 
 #include "raylib.h"
 
@@ -18,6 +19,20 @@ int main() {
 
   Model monk = LoadModel("models/monk.glb");
 
+  Shader lighting_shader = LoadShader("shaders/lighting.vertex.glsl", "shaders/lighting.fragment.glsl");
+  Vector3 color = { 1.0f, 1.0f, 1.0f };
+
+  SetShaderValue(
+    lighting_shader,
+    GetShaderLocation(lighting_shader, "surfaceColor"),
+    &color,
+    SHADER_UNIFORM_VEC3
+  );
+
+  for (int i = 0;i < monk.materialCount;i++) {
+    monk.materials[i].shader = lighting_shader;
+  }
+
   while (!WindowShouldClose()) {
     BeginDrawing();
     ClearBackground(BLACK);
@@ -35,6 +50,7 @@ int main() {
     EndDrawing();
   }
 
+  UnloadShader(lighting_shader);
   UnloadModel(monk);
 
   CloseWindow();
