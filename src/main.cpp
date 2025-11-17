@@ -20,7 +20,7 @@ int main() {
   camera.fovy = 45.0f;
   camera.projection = CAMERA_PERSPECTIVE;
 
-  Model cube { LoadModel("models/cube-materials.glb") };
+  Model cube { LoadModel("models/cube.glb") };
   Shader lighting_shader { LoadShader("shaders/lighting.vertex.glsl", "shaders/lighting.fragment.glsl") };
 
   Renderer renderer { camera, lighting_shader };
